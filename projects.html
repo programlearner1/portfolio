@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project List</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fc;
+            margin: 0;
+            padding: 40px;
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .container:hover {
+            transform: scale(1.02);
+        }
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #444;
+        }
+        .project-list {
+            list-style: none;
+            padding: 0;
+        }
+        .project-list li {
+            background: #f1f3f7;
+            margin: 12px 0;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .project-list li::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            transition: left 0.4s ease-in-out;
+            z-index: 0;
+        }
+        .project-list li:hover::before {
+            left: 0;
+        }
+        .project-list li a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            width: 100%;
+            padding: 10px;
+            transition: color 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+        .project-list li:hover a {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2> My Projects </h2>
+        <ul class="project-list">
+            <li><a href="https://pavansite.netlify.app/">Music player</a></li>
+            <li><a href="https://phonesilent.netlify.app/">Phone silencer</a></li>
+            <li><a href="https://speed-read.netlify.app/">Speed reader</a></li>
+        </ul>
+        </ul>
+    </div>
+</body>
+</html>

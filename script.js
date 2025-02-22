@@ -1,3 +1,15 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const myBox = document.getElementById("myBox");
+
+  if (myBox) {
+      myBox.addEventListener("click", function () {
+          window.location.href = "skills.html"; 
+      });
+  } else {
+      console.warn("Element with ID 'myBox' not found! Check your HTML.");
+  }
+
+
 /* ----- NAVIGATION BAR FUNCTION ----- */
 function myMenuFunction(){
     let menuBtn = document.getElementById("myNavMenu");
@@ -17,7 +29,7 @@ function myMenuFunction(){
 
     if (document.body.scrollTop > 50 || document.documentElement.scrollTop >  50) {
 
-      navHeader.style.boxShadow = "0 1px 6px rgba(0, 0, 0, 0.1)";
+      navHeader.style.boxShadow = "0 1px 6px rgba(0, 0, 0, 0. 1)";
       navHeader.style.height = "70px";
       navHeader.style.lineHeight = "70px";
 
@@ -118,3 +130,4 @@ function scrollActive() {
 }
 
 window.addEventListener('scroll', scrollActive)
+});
