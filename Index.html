@@ -180,35 +180,90 @@
 
             <!-- -------------- CONTACT BOX ---------------- -->
 
-            <section class="section" id="contact">
-                <div class="top-header">
-                    <h1>Get in touch</h1>
-                    <span>Do you have a project in your mind, contact me here</span>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="contact-info">
-                            <h2>Find Me <i class="uil uil-corner-right-down"></i></h2>
-                            <p><i class="uil uil-envelope"></i> Email: pavankalyanreddyrajula4578@gmail.com</p>
-                            <p><i class="uil uil-phone"></i> +91 9912321090</p>
-                        </div>
+            <!-- Contact Section -->
+<section class="section" id="contact">
+    <div class="top-header">
+        <h1>Get in touch</h1>
+        <span>Do you have a project in your mind? Contact me here</span>
+    </div>
+
+    <div class="row">
+        <!-- Contact Info -->
+        <div class="col">
+            <div class="contact-info">
+                <h2>Find Me <i class="uil uil-corner-right-down"></i></h2>
+                <p><i class="uil uil-envelope"></i> Email: reddyrajulapavan2001@gmail.com</p>
+                <p><i class="uil uil-phone"></i> +91 9912321090</p>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="col">
+            <div class="form-control">
+                <form id="contact-form">
+                    <div class="form-inputs">
+                        <input type="text" id="name" class="input-field" placeholder="Name" required>
+                        <input type="email" id="email" class="input-field" placeholder="Email" required>
                     </div>
-                    <div class="col">
-                        <div class="form-control">
-                            <div class="form-inputs">
-                                <input type="text" class="input-field" placeholder="Name">
-                                <input type="text" class="input-field" placeholder="Email">
-                            </div>
-                            <div class="text-area">
-                                <textarea placeholder="Message"></textarea>
-                            </div>
-                            <div class="form-button">
-                                <button class="btn">Send <i class="uil uil-message"></i></button>
-                            </div>
-                        </div>
+                    <div class="text-area">
+                        <textarea id="message" placeholder="Message" required></textarea>
                     </div>
-                </div>
-            </section>
+                    <div class="form-button">
+                        <button type="submit" class="btn">Send <i class="uil uil-message"></i></button>
+                    </div>
+
+                    <!-- Success Message (Hidden by Default) -->
+                    <div id="success-message" class="hidden">📩 Email Sent Successfully!</div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CSS for Success Message -->
+<style>
+    #success-message {
+        display: none;
+        background: #28a745;
+        color: white;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 16px;
+    }
+</style>
+
+<!-- EmailJS Script -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+    (function(){
+        emailjs.init("otA6Ia_d634o2SzY_"); // Replace with your EmailJS User ID
+    })();
+
+    document.getElementById("contact-form").addEventListener("submit", function(event){
+        event.preventDefault(); // Prevent page reload
+
+        emailjs.send("service_aks673g", "template_kugomm7", {
+            from_name: document.getElementById("name").value,
+            from_email: document.getElementById("email").value,
+            message: document.getElementById("message").value
+        })
+        .then(function(response) {
+            // Show success message
+            let successMsg = document.getElementById("success-message");
+            successMsg.style.display = "block";
+
+            // Hide message after 1 second
+            setTimeout(() => {
+                successMsg.style.display = "none";
+            }, 1000);
+        }, function(error) {
+            alert("Failed to send message. Try again later.");
+        });
+    });
+</script>
+
 
         </main>
 
@@ -255,6 +310,7 @@
     </div>
 
 
+    <div id="myBox">Click me</div>
 
 
     <!-- ----- TYPING JS Link ----- -->
