@@ -238,29 +238,47 @@
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
     (function(){
-        emailjs.init("otA6Ia_d634o2SzY_"); // Replace with your EmailJS User ID
+        emailjs.init("otA6Ia_d634o2SzY_");
     })();
 
-    document.getElementById("contact-form").addEventListener("submit", function(event){
-        event.preventDefault(); // Prevent page reload
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+        event.preventDefault();
 
-        emailjs.send("service_aks673g", "template_kugomm7", {
-            from_name: document.getElementById("name").value,
-            from_email: document.getElementById("email").value,
+        // Update template parameters to match your template variables
+        const templateParams = {
+            user_name: document.getElementById("name").value,    // Changed from from_name to user_name
+            user_email: document.getElementById("email").value,  // Changed from from_email to user_email
             message: document.getElementById("message").value
-        })
-        .then(function(response) {
-            // Show success message
-            let successMsg = document.getElementById("success-message");
-            successMsg.style.display = "block";
+        };
 
-            // Hide message after 1 second
-            setTimeout(() => {
-                successMsg.style.display = "none";
-            }, 1000);
-        }, function(error) {
-            alert("Failed to send message. Try again later.");
-        });
+        // Show loading state
+        const submitButton = this.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
+        submitButton.innerHTML = 'Sending...';
+
+        emailjs.send("service_bn7iiew", "template_kugomm7", templateParams)
+            .then(function(response) {
+                console.log("SUCCESS!", response.status, response.text);
+                let successMsg = document.getElementById("success-message");
+                successMsg.style.display = "block";
+                document.getElementById("contact-form").reset();
+                
+                // Reset button
+                submitButton.disabled = false;
+                submitButton.innerHTML = 'Send <i class="uil uil-message"></i>';
+
+                setTimeout(() => {
+                    successMsg.style.display = "none";
+                }, 3000);
+            })
+            .catch(function(error) {
+                console.error("FAILED...", error);
+                alert("Failed to send message. Please try again later.");
+                
+                // Reset button
+                submitButton.disabled = false;
+                submitButton.innerHTML = 'Send <i class="uil uil-message"></i>';
+            });
     });
 </script>
 
